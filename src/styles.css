@@ -1,0 +1,51 @@
+/*!
+ * Redacted Script by Christian Naths
+ * Copyright 2013 The Redacted Project Authors (https://github.com/christiannaths/redacted-font)
+ * Licensed under the SIL Open Font License, Version 1.1 (https://openfontlicense.org)
+ */
+
+/* Every glyph is a squiggle. The build inlines the fonts as data URLs so the plugin works offline. */
+@font-face {
+	font-family: 'Redacted Script';
+	font-weight: 400;
+	font-display: block;
+	src: url('../fonts/RedactedScript-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Redacted Script';
+	font-weight: 700;
+	font-display: block;
+	src: url('../fonts/RedactedScript-Bold.ttf') format('truetype');
+}
+
+/*
+ * Scribble the note body only: the title, properties, and UI stay readable.
+ * Turn on everywhere with the "Toggle scribble mode" command, or for one note
+ * with `cssclasses: scribble` in its properties.
+ */
+body.scribble-mode .markdown-source-view .cm-content,
+body.scribble-mode .markdown-preview-view .markdown-preview-section,
+.scribble.markdown-source-view .cm-content,
+.scribble.markdown-preview-view .markdown-preview-section {
+	--font-monospace: 'Redacted Script';
+	font-family: 'Redacted Script', var(--font-text) !important;
+	color: color-mix(in srgb, var(--color-accent) 55%, var(--text-normal));
+	line-height: 2;
+}
+
+body.scribble-mode .markdown-source-view .cm-content *,
+body.scribble-mode .markdown-preview-view .markdown-preview-section *,
+.scribble.markdown-source-view .cm-content *,
+.scribble.markdown-preview-view .markdown-preview-section * {
+	font-family: 'Redacted Script', var(--font-text) !important;
+}
+
+/* Keep properties readable in reading view. */
+body.scribble-mode .markdown-preview-view .metadata-container,
+body.scribble-mode .markdown-preview-view .metadata-container *,
+.scribble.markdown-preview-view .metadata-container,
+.scribble.markdown-preview-view .metadata-container * {
+	font-family: var(--font-interface) !important;
+	color: var(--text-normal);
+}

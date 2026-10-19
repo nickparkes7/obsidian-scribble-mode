@@ -1,0 +1,10 @@
+{
+	"id": "scribble-mode",
+	"name": "Scribble Mode",
+	"version": "1.0.0",
+	"minAppVersion": "1.0.0",
+	"description": "Turn note text into squiggles so you can write freely without stopping to reread or edit.",
+	"author": "Nicholas Parkes",
+	"authorUrl": "https://github.com/nickparkes7",
+	"isDesktopOnly": false
+}
