@@ -21,31 +21,27 @@
 
 /*
  * Scribble the note body only: the title, properties, and UI stay readable.
+ * In reading view the title and properties sit in .mod-header inside the
+ * section, so that block is left out.
  * Turn on everywhere with the "Toggle scribble mode" command, or for one note
  * with `cssclasses: scribble` in its properties.
+ *
+ * Obsidian styles headings, code and other formatting through font variables,
+ * so overriding those variables on the note body reaches all of them.
  */
 body.scribble-mode .markdown-source-view .cm-content,
-body.scribble-mode .markdown-preview-view .markdown-preview-section,
+body.scribble-mode .markdown-preview-view .markdown-preview-section > :not(.mod-header, .mod-footer),
 .scribble.markdown-source-view .cm-content,
-.scribble.markdown-preview-view .markdown-preview-section {
+.scribble.markdown-preview-view .markdown-preview-section > :not(.mod-header, .mod-footer) {
+	--font-text: 'Redacted Script';
 	--font-monospace: 'Redacted Script';
-	font-family: 'Redacted Script', var(--font-text) !important;
+	--h1-font: 'Redacted Script';
+	--h2-font: 'Redacted Script';
+	--h3-font: 'Redacted Script';
+	--h4-font: 'Redacted Script';
+	--h5-font: 'Redacted Script';
+	--h6-font: 'Redacted Script';
+	font-family: 'Redacted Script';
 	color: color-mix(in srgb, var(--color-accent) 55%, var(--text-normal));
 	line-height: 2;
-}
-
-body.scribble-mode .markdown-source-view .cm-content *,
-body.scribble-mode .markdown-preview-view .markdown-preview-section *,
-.scribble.markdown-source-view .cm-content *,
-.scribble.markdown-preview-view .markdown-preview-section * {
-	font-family: 'Redacted Script', var(--font-text) !important;
-}
-
-/* Keep properties readable in reading view. */
-body.scribble-mode .markdown-preview-view .metadata-container,
-body.scribble-mode .markdown-preview-view .metadata-container *,
-.scribble.markdown-preview-view .metadata-container,
-.scribble.markdown-preview-view .metadata-container * {
-	font-family: var(--font-interface) !important;
-	color: var(--text-normal);
 }
